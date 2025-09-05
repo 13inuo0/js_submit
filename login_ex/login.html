@@ -94,6 +94,8 @@
           setTimeout(() => {
             window.location.href = "main.html";
           }, 2000);
+          //   인풋을 리셋 시킨다.
+          form.reset();
         } else {
           message.innerHTML = `이메일 또는 비밀번호가 올바르지 않습니다. `;
           message.style.color = "red";
