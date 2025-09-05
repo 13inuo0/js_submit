@@ -25,7 +25,18 @@
       const form = document.querySelector("#myForm");
       const result = document.querySelector("#result");
       const localResult = document.querySelector("#localStorage_result");
-      //   페이지 로드
+      //   페이지 로드될 때 로컬스토리지에 저장된 값이 있으면 화면에 바로 출력
+      //  함수 안의 내용을밖에서 가져와도 문제가 뜨지 않는다.
+      const savedName = localStorage.getItem("username");
+      const savedEmail = localStorage.getItem("useremail");
+      //   저장된게 있으면 화면에 입력하기
+      if (savedName && savedEmail) {
+        localResult.innerHTML = `
+        <p>저장된 이름:${savedName}</p>
+        <p>저장된 이메일:${savedEmail}</p>
+        `;
+      }
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         // console.log("제출");
@@ -62,6 +73,8 @@
         if (!userEmail.includes("@")) {
           alert("올바른 이메일을 입력하세요");
         }
+        // ✨그냥 alert로 입력해도 작동하지만 return alert 의 형식으로 작성하면 로컬 스토리지에 저장되지 않기 때문에 return alert로 작성하는걸 실무에서 선호✨
+
         // localStorage 저장
         localStorage.setItem("username", userName);
         localStorage.setItem("useremail", userEmail);
