@@ -48,8 +48,8 @@
         background: #15803d;
       }
       #message {
-        margin-top: 10px;
-        text-align: center;
+        margin: 10px 0;
+        /* text-align: center; */
       }
     </style>
   </head>
@@ -79,6 +79,25 @@
       const message = document.querySelector("#message");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
+        // 로그인 페이지에서 입력한 값
+        const email = document.querySelector("#loginEmail").value.trim();
+        const password = document.querySelector("#loginPassword").value.trim();
+        // 로컬스토리지에서 값 가져오기
+        const savedEmail = localStorage.getItem("userEmail");
+        const savedPassword = localStorage.getItem("userPassword");
+        const savedName = localStorage.getItem("userName");
+        // 확인
+        if (email === savedEmail && password === savedPassword) {
+          message.innerHTML = ` ${savedName}님, 로그인 성공하셨습니다.  `;
+          message.style.color = "green";
+          //   window.location.href = "main.html";
+          setTimeout(() => {
+            window.location.href = "main.html";
+          }, 2000);
+        } else {
+          message.innerHTML = `이메일 또는 비밀번호가 올바르지 않습니다. `;
+          message.style.color = "red";
+        }
       });
     </script>
   </body>
