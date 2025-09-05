@@ -6,10 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <form id="myForm">
-      <label for="username">이름 : <input type="text" id="username" /></label>
+    <form id="myForm" name="myForm">
       <label for="username"
-        >이메일 : <input type="email" id="useremail"
+        >이름 : <input type="text" id="username" name="myForm"
+      /></label>
+      <label for="username"
+        >이메일 : <input type="email" id="useremail" name="myForm"
       /></label>
       <button type="submit">제출</button>
     </form>
@@ -18,10 +20,20 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         // console.log("제출");
-        const userName = document.querySelector("#username").value.trim();
-        const userEmail = document.querySelector("#useremail").value;
+        // const userName = document.querySelector("#username").value;
+        // const userEmail = document.querySelector("#useremail").value;
+
+        // 빈문자열(빈공간) 제거 trim() 메서드
+        // const userName = document.querySelector("#username").value.trim();
+        // const userEmail = document.querySelector("#useremail").value.trim();
+
+        // 로그 한번에 적기
         // console.log(userName);
         // console.log(userEmail);
+        // console.log(userName, userEmail);
+
+        const userName = myForm.username.value.trim();
+        const userEmail = myForm.useremail.value.trim();
         console.log(userName, userEmail);
       });
     </script>
