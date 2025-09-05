@@ -17,7 +17,12 @@
       const form = document.querySelector("#myForm");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        console.log("제출");
+        // console.log("제출");
+        const userName = document.querySelector("#username").value.trim();
+        const userEmail = document.querySelector("#useremail").value;
+        // console.log(userName);
+        // console.log(userEmail);
+        console.log(userName, userEmail);
       });
     </script>
   </body>
