@@ -15,8 +15,12 @@
       /></label>
       <button type="submit">제출</button>
     </form>
+    <div id="result">
+      <!-- js출력 -->
+    </div>
     <script>
       const form = document.querySelector("#myForm");
+      const result = document.querySelector("#result");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         // console.log("제출");
@@ -35,6 +39,13 @@
         const userName = myForm.username.value.trim();
         const userEmail = myForm.useremail.value.trim();
         console.log(userName, userEmail);
+
+        //  이름이랑 메일주소를 화면에 출력하기
+        result.innerHTML = `<p>이름:${userName}</p>
+         <p>이메일:${userEmail}</p>`;
+
+        //  input초기화
+        form.reset();
       });
     </script>
   </body>
